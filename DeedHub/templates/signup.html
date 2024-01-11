@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        
+       body{
+    
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20220522/pngtree-abstract-light-blue-wavy-modern-curve-lines-with-clean-background-vector-image_1379860.jpg);
+    
+    background-size: cover;
+    background-repeat:no-repeat ;
+}
+.background{
+    
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    
+    left: 50%;
+    top: 50%;
+}
+
+form{
+    height: 520px;
+    width: 400px;
+    
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #221f1f;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+
+
+input{
+    
+   
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border: 2px solid #ccc; /* Add this line for border */
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+
+
+}
+::placeholder{
+    color: #100f0f;
+}
+
+label {
+            color: black;
+            font-size: 18px;
+            text-align: left;
+        }
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color:#fb7a09;
+    color: white;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+    </style>
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+       
+        <form action="/signup" method="post" onsubmit="return validatePassword()">
+            <h1  style="text-align: center;">Sign Up</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required style="color: black;">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button type="submit">Sign Up</button>
+            <button onclick="sign()">Already signed up? Sign in</button>
+        </form>
+        <script>
+            function sign(){
+                window.location.href = '/signin';
+            }
+
+            function validatePassword() {
+                var passwordInput = document.getElementById('password');
+                var password = passwordInput.value;
+
+                // Define your regular expressions for password validation
+                var lengthRegex = /^.{8,}$/;
+                var digitRegex = /\d/;
+                var lowercaseRegex = /[a-z]/;
+                var uppercaseRegex = /[A-Z]/;
+                var specialCharRegex = /[!@#$%^&*()_.?":{}|<>]/;
+
+                if (!lengthRegex.test(password)) {
+                    alert('Password must be at least 8 characters long.');
+                    passwordInput.focus();
+                    return false;
+                }
+
+                if (!digitRegex.test(password)) {
+                    alert('Password must contain at least one digit (0-9).');
+                    passwordInput.focus();
+                    return false;
+                }
+
+                if (!lowercaseRegex.test(password)) {
+                    alert('Password must contain at least one lowercase letter (a-z).');
+                    passwordInput.focus();
+                    return false;
+                }
+
+                if (!uppercaseRegex.test(password)) {
+                    alert('Password must contain at least one uppercase letter (A-Z).');
+                    passwordInput.focus();
+                    return false;
+                }
+
+                if (!specialCharRegex.test(password)) {
+                    alert('Password must contain at least one special character.');
+                    passwordInput.focus();
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
+    </div>
+</body>
+</html>

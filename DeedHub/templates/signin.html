@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+ body {
+            background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20220522/pngtree-abstract-light-blue-wavy-modern-curve-lines-with-clean-background-vector-image_1379860.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+   
+
+form{
+    height: 520px;
+    width: 400px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: black;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+
+
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    border: 2px solid #ccc; /* Add this line for border */
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: grey;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color:orange;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+
+
+
+<body>
+    <div class="signin-container">
+       
+        <form action="/signin" method="post">
+            <h1 style="text-align: center;">Sign In</h1>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign In</button>
+            
+        </form>
+        
+        
+    </div>
+    
+    
+</body>
+</html>

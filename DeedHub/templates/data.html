@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer page</title>
+    <script>
+         function filterData() {
+            var selectedDimension = document.getElementById("dimensionFilter").value;
+            var selectedDistrict = document.getElementById("districtFilter").value;
+            var rows = document.getElementsByClassName("data-row");
+
+            for (var i = 0; i < rows.length; i++) {
+                var dimensionCell = rows[i].getElementsByTagName("td")[4]; // Assuming "Dimension" is the sixth column
+                var districtCell = rows[i].getElementsByTagName("td")[6]; // Assuming "District" is the eighth column
+
+                var dimensionMatch = dimensionCell.innerText === selectedDimension || selectedDimension === "All";
+                var districtMatch = districtCell.innerText === selectedDistrict || selectedDistrict === "All";
+
+                // Check if all columns in the row are empty
+                var allColumnsEmpty = Array.from(rows[i].getElementsByTagName("td")).every(cell => cell.innerText.trim() === "");
+
+                var display = dimensionMatch && districtMatch && !allColumnsEmpty;
+                rows[i].style.display = display ? "" : "none";
+            }
+    }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        
+
+        h2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+     .fil{
+        margin-top: 25px;
+        margin-left:30px;
+        
+
+     }
+     table {
+            
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+      
+
+    </style>
+    
+</head>
+<body>
+    <h2 style="font-size: x-large;font-style: italic ;">Discover your perfect property</h2>
+     <div class="fil">
+        
+    
+    <select id="dimensionFilter" onchange="filterData()">
+       
+        <option value="All" >Dimensions</option>
+        <option value="20x30">20x30</option>
+        <option value="25x30">25x30</option>
+        <option value="30x40">30x40</option>
+        <option value="60x40">60x40</option>
+        <option value="50x80">50x80</option>
+    
+    </select>
+ 
+       
+        <select id="districtFilter" onchange="filterData()">
+        <option value="All">Districts</option>
+        <option value="Bagalkot">1)Bagalkot</option>
+        <option value="Ballari (Bellary)">2)Ballari (Bellary)</option>
+        <option value="Belagavi (Belgaum)">3)Belagavi (Belgaum)</option>
+        <option value="Bengaluru Rural">4)Bengaluru Rural</option>
+        <option value="Bengaluru Urban">5)Bengaluru Urban</option>
+        <option value="Bidar">6)Bidar</option>
+        <option value="Bijapur">7)Bijapur</option>
+        <option value="Chamarajanagar">8)Chamarajanagar</option>
+        <option value="Chikballapur">9)Chikballapur</option>
+        <option value="Chikkamagaluru (Chikmagalur)">10)Chikkamagaluru (Chikmagalur)</option>
+        <option value="Chitradurga">11)Chitradurga</option>
+        <option value="Dakshina Kannada">12)Dakshina Kannada</option>
+        <option value="Davanagere">13)Davanagere</option>
+        <option value="Dharwad">14)Dharwad</option>
+        <option value="Gadag">15)Gadag</option>
+        <option value="Hassan">16)Hassan</option>
+        <option value="Haveri">17)Haveri</option>
+        <option value="Hubli">18)Hubli</option>
+        <option value="Kalaburagi (Gulbarga)">19)Kalaburagi (Gulbarga)</option>
+        <option value="Kodagu">20)Kodagu</option>
+        <option value="Kolar">21)Kolar</option>
+        <option value="Koppal">22)Koppal</option>
+        <option value="Mandya">23)Mandya</option>
+        <option value="Mysuru">24)Mysuru</option>
+        <option value="Raichur">25)Raichur</option>
+        <option value="Ramanagara">26)Ramanagara</option>
+        <option value="Shivamogga (Shimoga)">27)Shivamogga (Shimoga)</option>
+        <option value="Tumakuru (Tumkur)">28)Tumakuru (Tumkur)</option>
+        <option value="Udupi">29)Udupi</option>
+        <option value="Uttara Kannada">30)Uttara Kannada</option>
+        <option value="Vijayanagara">31)Vijayanagara</option>
+        <option value="Yadgir">32)Yadgir</option>
+    </select>
+
+
+</div>
+    <table >
+        <tr>
+            <th>ID</th>
+            
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Site_Description</th>
+            <th>Dimension</th>
+            <th>Location</th>
+            <th>District</th>
+            <th>Survey_No</th>
+            <th>Image</th>
+            
+        </tr>
+        {% for row in data %}
+            <tr class="data-row">
+                <td>{{ row[0] }}</td>            
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+                <td>{{ row[8] }}</td>
+                <td>{{ row[10] }}</td>
+                <td>
+                    {% if row[9] %}
+                        <img src="data:image/jpeg;base64,{{ base64.b64encode(row[9]).decode('utf-8') }}" alt="Image" width="150">
+                    {% else %}
+                        <p> </p>
+                    {% endif %}
+                </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+   
+</body>
+</html>

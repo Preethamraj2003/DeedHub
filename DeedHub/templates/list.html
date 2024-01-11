@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysuru Areas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mysuru Areas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Area Number</th>
+                <th>Area Name</th>
+                <th>Range pice per sq.feet</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for area in areas %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ area.name }}</td>
+                    <td>{{ area.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Taluk Number</th>
+                <th>Taluk Name</th>
+                <th>Range pice per sq.feet</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for taluks in taluk_data %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ taluks.name }}</td>
+                    <td>{{ taluks.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</body>
+</html>
